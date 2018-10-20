@@ -1,77 +1,85 @@
 #include <iostream>
 using namespace std;
 
-void merge(int arr1[], int size1, int arr2[], int size2, int final[])
+void merge(int input[], int startIndex, int endIndex)
 {
 
-  /* Don't write main().
-     * Don't read input, it is passed as function argument.
-     * Save the merged array in ans[] array passed as argument.
-     * Don't return or print anything.
-     * Taking input and printing output is handled automatically.
-     */
-  int i = 0, j = 0, count = 0;
-  while (i < size1 && j < size2)
+  int mid = (startIndex + endIndex) / 2;
+
+  int size = endIndex - startIndex + 1;
+
+  int *output = new int[size];
+  int i = startIndex, j = mid + 1, k = 0;
+
+  while (i <= mid && j <= endIndex)
   {
-    if (arr1[i] > arr2[j])
+    if (input[i] > input[j])
     {
-      final[count] = arr2[j];
-      j += 1;
-      count += 1;
+      output[k] = input[j];
+      j++;
+      k++;
     }
     else
     {
-      final[count] = arr1[i];
-      i += 1;
-      count += 1;
+      output[k] = input[i];
+      i++;
+      k++;
     }
   }
 
-  if (i == size1)
+  while (i <= mid)
   {
-    for (int t = j; t < size2; t++)
-    {
-      final[count] = arr2[t];
-      count += 1;
-    }
+    output[k] = input[i];
+    i++;
+    k++;
   }
 
-  if (j == size2)
+  while (j <= endIndex)
   {
-    for (int t = i; t < size1; t++)
-    {
-      final[count] = arr1[t];
-      count += 1;
-    }
+    output[k] = input[j];
+    j++;
+    k++;
   }
+  int y = 0;
+  for (int x = startIndex; x <= endIndex; x++)
+  {
+    input[x] = output[y];
+    y++;
+  }
+
+  delete[] output;
+}
+
+void mergeSort(int input[], int startIndex, int endIndex)
+{
+  if (startIndex >= endIndex)
+  {
+    return;
+  }
+
+  int mid = (startIndex + endIndex) / 2;
+
+  mergeSort(input, startIndex, mid);
+  mergeSort(input, mid + 1, endIndex);
+  merge(input, startIndex, endIndex);
+}
+
+void mergeSort(int input[], int length)
+{
+  int startIndex = 0;
+  int endIndex = length - 1;
+  mergeSort(input, startIndex, endIndex);
 }
 
 int main()
 {
-  int size1;
-  cin >> size1;
-  int *arr1 = new int[size1];
-  for (int i = 0; i < size1; i++)
+  int input[1000], length;
+  cin >> length;
+  for (int i = 0; i < length; i++)
+    cin >> input[i];
+  mergeSort(input, length);
+  for (int i = 0; i < length; i++)
   {
-    cin >> arr1[i];
+    cout << input[i] << " ";
   }
-  int size2;
-  cin >> size2;
-  int *arr2 = new int[size2];
-  for (int i = 0; i < size2; i++)
-  {
-    cin >> arr2[i];
-  }
-
-  int *ans = new int[size1 + size2];
-
-  merge(arr1, size1, arr2, size2, ans);
-
-  for (int i = 0; i < size1 + size2; i++)
-  {
-    cout << ans[i] << " ";
-  }
-  delete arr1;
-  delete arr2;
-  delete ans;
 }
