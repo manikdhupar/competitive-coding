@@ -25,7 +25,15 @@ int partition(int input[], int startIndex, int endIndex)
 
   while (i <= pivotIndex && j >= pivotIndex)
   {
-    if (input[i] >= element && input[j] <= element)
+    if (input[i] <= element)
+    {
+      i++;
+    }
+    else if (input[j] > element)
+    {
+      j--;
+    }
+    else
     {
       int temp = input[i];
       input[i] = input[j];
@@ -33,20 +41,8 @@ int partition(int input[], int startIndex, int endIndex)
       i++;
       j--;
     }
-    else if (input[i] >= element && input[j] >= element)
-    {
-      j--;
-    }
-    else if (input[i] <= element && input[j] <= element)
-    {
-      i++;
-    }
-    else
-    {
-      i++;
-      j--;
-    }
   }
+
   return pivotIndex;
 }
 
@@ -58,7 +54,7 @@ void quickSort(int input[], int startIndex, int endIndex)
   }
 
   int c = partition(input, startIndex, endIndex);
-  quickSort(input, startIndex, c);
+  quickSort(input, startIndex, c - 1);
   quickSort(input, c + 1, endIndex);
 }
 
