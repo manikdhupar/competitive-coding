@@ -24,7 +24,6 @@ int keypad(int num, string output[])
         {
             tempArray[t] = output[t];
         }
-
         for (int i = 0; i < smallOutputSize; i++)
         {
             string temp = tempArray[i];
