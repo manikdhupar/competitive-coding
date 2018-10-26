@@ -21,6 +21,8 @@ void printKeypad(int num, string output)
     printKeypad(num, keypadArray[digit][i] + output);
   }
 
+  // Long way but you'l understand what is happening
+
   // For understanding
   // if (digit == 2)
   // {
