@@ -14,6 +14,8 @@ int subset(int input[], int n, int output[][20])
 
   for (int i = 0; i < smallOutput; i++)
   {
+    // 0th index stores the number of columns which would help us to print how much
+    // elements are present in each row
     output[i + smallOutput][0] = output[i][0] + 1;
     output[i + smallOutput][1] = input[0];
     for (int j = 1; j <= output[i][0]; j++)
