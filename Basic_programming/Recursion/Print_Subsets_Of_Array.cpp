@@ -28,7 +28,7 @@ void helper(int input[], int inputSize, int output[], int outputSize)
 
 void printSubsetsOfArray(int input[], int size)
 {
-  int *array = new int[1000];
+  int *array = new int[size];
   helper(input, size, array, 0);
 }
 
