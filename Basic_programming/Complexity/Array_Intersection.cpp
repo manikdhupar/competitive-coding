@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-// Approach - Sort arra1 + sort array2 + merge two sorted arrays
+// Approach - Sort array1 + sort array2 + merge two sorted arrays
 // complexity mlogm + nlogn + (m+n)
 
 void merge(int input1[], int input2[], int size1, int size2)
