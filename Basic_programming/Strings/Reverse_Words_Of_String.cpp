@@ -36,8 +36,6 @@ string helper(string input)
   reverse(input, 0, li);
 
   return input;
-  reverse(input, 0, li);
-  return input;
 }
 
 int main()
