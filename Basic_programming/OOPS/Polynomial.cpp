@@ -219,8 +219,6 @@ int main()
   case 1:
   {
     Polynomial result1 = first + second;
-    result1.print();
-    break;
   }
     // Subtract
   case 2:
@@ -257,12 +255,7 @@ int main()
     {
       cout << "false" << endl;
     }
-    else
-    {
-      cout << "true" << endl;
-    }
-    break;
-  }
+   
   }
 
   return 0;
